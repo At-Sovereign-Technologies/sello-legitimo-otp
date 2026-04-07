@@ -1,27 +1,27 @@
-# Development Environment
+# Entorno de Desarrollo
 
-## Prerequisites
+## Requisitos
 
-- Docker Desktop or Docker Engine + Docker Compose
+- Docker Desktop o Docker Engine
 - VS Code
-- Dev Containers extension
+- Extensión Dev Containers
 
-## Quick Start (Dev Container)
+## Inicio rápido (Dev Container)
 
-1. Open this repository in VS Code.
-2. Run: Dev Containers: Reopen in Container.
-3. Wait for post-create bootstrap to finish.
-4. Start the service:
+1. Abre este repositorio en VS Code.
+2. Ejecuta Dev Containers: Reopen in Container.
+3. Espera a que termine el post-create bootstrap.
+4. Inicia el servicio:
 
 ```bash
 ./mvnw spring-boot:run
 ```
 
-5. Confirm the API port is reachable on 8081.
+5. Verifica que la API esté disponible en el puerto 8081.
 
-## Environment Variables
+## Variables de entorno sugeridas
 
-Do not commit secrets. Configure local variables using shell exports or your local container environment.
+No publiques secretos en el repositorio. Usa variables locales del contenedor o del shell.
 
 ```env
 SPRING_PROFILES_ACTIVE=dev
@@ -29,9 +29,13 @@ OTP_PROVIDER=change_me
 OTP_TTL_SECONDS=300
 ```
 
-## Validation
+## Validación
 
 ```bash
 ./mvnw -q -DskipTests dependency:go-offline
 ./mvnw test
 ```
+
+## Nota operativa
+
+El bootstrap elimina una fuente Yarn inválida del contenedor base antes de ejecutar apt-get update para evitar fallos por llaves GPG externas.

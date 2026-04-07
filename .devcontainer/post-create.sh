@@ -5,6 +5,8 @@ echo "[bootstrap] Starting Java service environment bootstrap"
 
 if command -v apt-get >/dev/null 2>&1; then
   pkgs=()
+  # Remove broken Yarn source from base image to avoid apt key failures.
+  sudo rm -f /etc/apt/sources.list.d/yarn.list 2>/dev/null || true
   if ! command -v pg_isready >/dev/null 2>&1; then
     pkgs+=(postgresql-client)
   fi

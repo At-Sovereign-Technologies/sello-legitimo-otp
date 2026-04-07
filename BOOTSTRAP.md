@@ -1,24 +1,24 @@
-# Bootstrap Notes
+# Notas de Bootstrap
 
-## Source
+## Origen
 
-This repository adopts the organization-wide devcontainer migration baseline from the Sello Legitimo workspace.
+Este repositorio adopta la línea base de migración devcontainer definida para org-migration.
 
-## Applied Migration Steps
+## Cambios aplicados
 
-1. Added `.devcontainer/devcontainer.json` with Java 21 + Git feature.
-2. Added `.devcontainer/post-create.sh` to install CLI dependencies and preload Maven artifacts.
-3. Added `DEV_ENVIRONMENT.md` for reproducible setup and env placeholders.
-4. Added changelog entry documenting migration.
+1. Se agregó .devcontainer/devcontainer.json con Java 21 y Git.
+2. Se agregó .devcontainer/post-create.sh para instalar utilidades CLI y precargar dependencias Maven.
+3. Se agregó DEV_ENVIRONMENT.md para configuración reproducible.
+4. Se ajustó bootstrap para remover la fuente Yarn inválida antes de apt-get update.
 
-## Dependency Decisions
+## Decisiones de dependencias
 
-- Runtime: Java 21 (devcontainer image)
-- Build tooling: Maven wrapper + offline cache warmup
-- System tooling: `postgresql-client`, `redis-tools`
+- Runtime: Java 21 (imagen de devcontainer)
+- Build: Maven Wrapper con warmup offline
+- Utilidades del sistema: postgresql-client, redis-tools
 
-## Idempotency
+## Idempotencia
 
-- Bootstrap checks installed tools before apt installs.
-- Maven warmup can run repeatedly without side effects.
-- Secrets are represented only as placeholders.
+- El bootstrap valida herramientas instaladas antes de apt install.
+- El warmup de Maven se puede ejecutar múltiples veces sin efectos colaterales.
+- No se almacenan secretos en archivos versionados.
