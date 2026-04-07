@@ -1,0 +1,27 @@
+{
+  "name": "Sello Legitimo OTP Dev",
+  "image": "mcr.microsoft.com/devcontainers/java:1-21-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {}
+  },
+  "containerEnv": {
+    "SPRING_PROFILES_ACTIVE": "dev"
+  },
+  "postCreateCommand": "bash .devcontainer/post-create.sh",
+  "forwardPorts": [8081],
+  "portsAttributes": {
+    "8081": {
+      "label": "Spring Boot API",
+      "onAutoForward": "notify"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "vmware.vscode-spring-boot",
+        "ms-azuretools.vscode-docker"
+      ]
+    }
+  }
+}
